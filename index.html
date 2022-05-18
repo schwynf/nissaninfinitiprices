@@ -1,0 +1,121 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>A Basic HTML5 Template</title>
+  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <meta name="author" content="SitePoint">
+
+  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:image" content="image.png">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+  <!-- your content here... -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <label for="myfile">Select a file:</label>
+  <input type="file" id="myfile" name="myfile"><br><br>
+  <button onclick="check()">ssss</button>
+  <input type="submit">
+  <script>
+      console.log("whatttttt");
+      var name = '22433-97e05.html';                
+      $.get('https://www.nissanpartsdeal.com/parts/nissan~' + name, function(response) { 
+          let retailIndex = response.indexOf("Retail Price");
+          retailPrice = response[retailIndex + 30] + response[retailIndex + 31] + response[retailIndex + 32] + response[retailIndex + 33] + response[retailIndex + 34] + response[retailIndex + 35] + response[retailIndex + 36] + response[retailIndex + 37] + response[retailIndex + 38] + response[retailIndex + 39] + response[retailIndex + 40] + response[retailIndex + 41] + response[retailIndex + 42] + response[retailIndex + 43] + response[retailIndex + 44] + response[retailIndex + 45] + response[retailIndex + 46] + response[retailIndex + 47] + response[retailIndex + 48] + response[retailIndex + 49] + response[retailIndex + 50];
+          console.log(retailPrice);
+          let floatArray = [1,2,3,4,5,6,7,8,9,0,'.'];
+          let validatedPrice = '';
+            for (let index = 0; index < retailPrice.length; index++) {
+                for (let x = 0; x < floatArray.length; x++) {
+                    if(retailPrice[index] == floatArray[x]){
+                        validatedPrice += retailPrice[index];
+                        break;
+                    }
+                    
+                }
+            }
+            console.log(validatedPrice);
+
+
+        });
+        function csvToArray(str, delimiter = ",") {
+            // slice from start of text to the first \n index
+            // use split to create an array from string by delimiter
+            const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+
+            // slice from \n index + 1 to the end of the text
+            // use split to create an array of each csv value row
+            const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+
+            // Map the rows
+            // split values from each row into an array
+            // use headers.reduce to create an object
+            // object properties derived from headers:values
+            // the object passed as an element of the array
+            const arr = rows.map(function (row) {
+                const values = row.split(delimiter);
+                const el = headers.reduce(function (object, header, index) {
+                object[header] = values[index];
+                return object;
+                }, {});
+                return el;
+            });
+
+            // return the array
+            return arr;
+        }
+        const fileSelector = document.getElementById('myfile');
+        fileSelector.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                console.log(reader.result);
+                var data = csvToArray(reader.result);
+                console.log(data);
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    var partnumber = element.partnumber;                
+                    $.get('https://www.nissanpartsdeal.com/parts/nissan~' + partnumber, function(response) { 
+                        let retailIndex = response.indexOf("Retail Price");
+                        retailPrice = response[retailIndex + 30] + response[retailIndex + 31] + response[retailIndex + 32] + response[retailIndex + 33] + response[retailIndex + 34] + response[retailIndex + 35] + response[retailIndex + 36] + response[retailIndex + 37] + response[retailIndex + 38] + response[retailIndex + 39] + response[retailIndex + 40] + response[retailIndex + 41] + response[retailIndex + 42] + response[retailIndex + 43] + response[retailIndex + 44] + response[retailIndex + 45] + response[retailIndex + 46] + response[retailIndex + 47] + response[retailIndex + 48] + response[retailIndex + 49] + response[retailIndex + 50];
+                        let floatArray = [1,2,3,4,5,6,7,8,9,0,'.'];
+                        let validatedPrice = '';
+                            for (let index = 0; index < retailPrice.length; index++) {
+                                for (let x = 0; x < floatArray.length; x++) {
+                                    if(retailPrice[index] == floatArray[x]){
+                                        validatedPrice += retailPrice[index];
+                                        break;
+                                    }
+                                    
+                                }
+                            }
+                        console.log(validatedPrice);
+                    });
+                }
+            };
+
+            reader.onerror = function() {
+                console.log(reader.error);
+            };
+
+            reader.readAsText(file);
+
+        });
+  </script>
+</body>
+</html>
