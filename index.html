@@ -24,46 +24,18 @@
 </head>
 
 <body>
+    <label for="myfile">Select a file:</label>
+    <input type="file" id="myfile" name="myfile"><br><br>
+    <input onclick="start()" type="submit">
     <div id="main"></div>
   <!-- your content here... -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <label for="myfile">Select a file:</label>
-  <input type="file" id="myfile" name="myfile"><br><br>
-  <button onclick="check()">ssss</button>
-  <input type="submit">
-  <script>
-      console.log("whatttttt");
-      var name = '22433-97e05.html';                
-      $.get('https://www.nissanpartsdeal.com/parts/nissan~' + name, function(response) { 
-          let retailIndex = response.indexOf("Retail Price");
-          retailPrice = response[retailIndex + 30] + response[retailIndex + 31] + response[retailIndex + 32] + response[retailIndex + 33] + response[retailIndex + 34] + response[retailIndex + 35] + response[retailIndex + 36] + response[retailIndex + 37] + response[retailIndex + 38] + response[retailIndex + 39] + response[retailIndex + 40] + response[retailIndex + 41] + response[retailIndex + 42] + response[retailIndex + 43] + response[retailIndex + 44] + response[retailIndex + 45] + response[retailIndex + 46] + response[retailIndex + 47] + response[retailIndex + 48] + response[retailIndex + 49] + response[retailIndex + 50];
-          console.log(retailPrice);
-          let floatArray = [1,2,3,4,5,6,7,8,9,0,'.'];
-          let validatedPrice = '';
-            for (let index = 0; index < retailPrice.length; index++) {
-                for (let x = 0; x < floatArray.length; x++) {
-                    if(retailPrice[index] == floatArray[x]){
-                        validatedPrice += retailPrice[index];
-                        break;
-                    }
-                    
-                }
-            }
-        });
+  <script>               
         function csvToArray(str, delimiter = ",") {
-            // slice from start of text to the first \n index
-            // use split to create an array from string by delimiter
             const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
 
-            // slice from \n index + 1 to the end of the text
-            // use split to create an array of each csv value row
             const rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
-            // Map the rows
-            // split values from each row into an array
-            // use headers.reduce to create an object
-            // object properties derived from headers:values
-            // the object passed as an element of the array
             const arr = rows.map(function (row) {
                 const values = row.split(delimiter);
                 const el = headers.reduce(function (object, header, index) {
@@ -76,43 +48,50 @@
             // return the array
             return arr;
         }
-        const fileSelector = document.getElementById('myfile');
-        fileSelector.addEventListener('change', (event) => {
-            const file = event.target.files[0];
+
+        function start() {
+            const file = document.getElementById('myfile').files[0];
             const reader = new FileReader();
+            let element;
+            let retailIndex;
+            let floatArray = [1,2,3,4,5,6,7,8,9,0,'.'];
+            let validatedPrice
+            let mainEle;
+            let div;
 
             reader.onload = function() {
                 let data = csvToArray(reader.result);
-                let partnumber;
-                let element;
-                let retailIndex;
-                let floatArray;
-                let validatedPrice
-                let mainEle;
-                let span;
                 for (let index = 0; index < data.length; index++) {
-                    element = data[index];
-                    partnumber = element.partnumber;                
-                    $.get('https://www.nissanpartsdeal.com/parts/nissan~' + partnumber, function(response) { 
-                        retailIndex = response.indexOf("Retail Price");
-                        if(retailIndex != -1){
-                            retailPrice = response[retailIndex + 30] + response[retailIndex + 31] + response[retailIndex + 32] + response[retailIndex + 33] + response[retailIndex + 34] + response[retailIndex + 35] + response[retailIndex + 36] + response[retailIndex + 37] + response[retailIndex + 38] + response[retailIndex + 39] + response[retailIndex + 40] + response[retailIndex + 41] + response[retailIndex + 42] + response[retailIndex + 43] + response[retailIndex + 44] + response[retailIndex + 45] + response[retailIndex + 46] + response[retailIndex + 47] + response[retailIndex + 48] + response[retailIndex + 49] + response[retailIndex + 50];
-                            floatArray = [1,2,3,4,5,6,7,8,9,0,'.'];
-                            validatedPrice = '';
-                            for (let index = 0; index < retailPrice.length; index++) {
-                                for (let x = 0; x < floatArray.length; x++) {
-                                    if(retailPrice[index] == floatArray[x]){
-                                        validatedPrice += retailPrice[index];
-                                        break;
+                    element = data[index];       
+                    let partNumber = element.partnumber;                
+                    let partNumberHTML = element.partnumber + ".html";                
+                   $.get('https://www.nissanpartsdeal.com/parts/nissan~' + partNumberHTML)
+                    .then((response)=>{
+                        if(response && response.indexOf("Retail Price") != -1) { 
+                            retailIndex = response.indexOf("Retail Price");
+                            let retailprice = '';
+                            let validatedPrice = '';
+                            if(retailIndex != -1){
+                                retailPrice = response[retailIndex + 30] + response[retailIndex + 31] + response[retailIndex + 32] + response[retailIndex + 33] + response[retailIndex + 34] + response[retailIndex + 35] + response[retailIndex + 36] + response[retailIndex + 37] + response[retailIndex + 38] + response[retailIndex + 39] + response[retailIndex + 40] + response[retailIndex + 41] + response[retailIndex + 42] + response[retailIndex + 43] + response[retailIndex + 44] + response[retailIndex + 45] + response[retailIndex + 46] + response[retailIndex + 47] + response[retailIndex + 48] + response[retailIndex + 49] + response[retailIndex + 50];
+                                for (let index = 0; index < retailPrice.length; index++) {
+                                    for (let x = 0; x < floatArray.length; x++) {
+                                        if(retailPrice[index] == floatArray[x]){
+                                            validatedPrice += retailPrice[index];
+                                            break;
+                                        }
+                                        
                                     }
-                                    
                                 }
                             }
+                            
                             mainEle = document.getElementById("main");
-                            span = document.createElement('span');
-                            span.innerHTML = "Part Number: " + partnumber + ", Price: " + validatedPrice;
+                            div = document.createElement('div');
+                            div.innerHTML = "Part Number: " + partNumber  + ", Price: " + validatedPrice;
+                            mainEle.appendChild(div);
                         }
-                    });
+                    }).catch((error)=>{
+                        console.log(error);
+                    })
                 }
             };
 
@@ -122,7 +101,8 @@
 
             reader.readAsText(file);
 
-        });
+
+        }
   </script>
 </body>
 </html>
