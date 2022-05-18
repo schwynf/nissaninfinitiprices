@@ -24,6 +24,7 @@
 </head>
 
 <body>
+    <div id="main"></div>
   <!-- your content here... -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <label for="myfile">Select a file:</label>
@@ -48,9 +49,6 @@
                     
                 }
             }
-            console.log(validatedPrice);
-
-
         });
         function csvToArray(str, delimiter = ",") {
             // slice from start of text to the first \n index
@@ -84,17 +82,23 @@
             const reader = new FileReader();
 
             reader.onload = function() {
-                console.log(reader.result);
-                var data = csvToArray(reader.result);
-                console.log(data);
+                let data = csvToArray(reader.result);
+                let partnumber;
+                let element;
+                let retailIndex;
+                let floatArray;
+                let validatedPrice
+                let mainEle;
+                let span;
                 for (let index = 0; index < data.length; index++) {
-                    const element = data[index];
-                    var partnumber = element.partnumber;                
+                    element = data[index];
+                    partnumber = element.partnumber;                
                     $.get('https://www.nissanpartsdeal.com/parts/nissan~' + partnumber, function(response) { 
-                        let retailIndex = response.indexOf("Retail Price");
-                        retailPrice = response[retailIndex + 30] + response[retailIndex + 31] + response[retailIndex + 32] + response[retailIndex + 33] + response[retailIndex + 34] + response[retailIndex + 35] + response[retailIndex + 36] + response[retailIndex + 37] + response[retailIndex + 38] + response[retailIndex + 39] + response[retailIndex + 40] + response[retailIndex + 41] + response[retailIndex + 42] + response[retailIndex + 43] + response[retailIndex + 44] + response[retailIndex + 45] + response[retailIndex + 46] + response[retailIndex + 47] + response[retailIndex + 48] + response[retailIndex + 49] + response[retailIndex + 50];
-                        let floatArray = [1,2,3,4,5,6,7,8,9,0,'.'];
-                        let validatedPrice = '';
+                        retailIndex = response.indexOf("Retail Price");
+                        if(retailIndex != -1){
+                            retailPrice = response[retailIndex + 30] + response[retailIndex + 31] + response[retailIndex + 32] + response[retailIndex + 33] + response[retailIndex + 34] + response[retailIndex + 35] + response[retailIndex + 36] + response[retailIndex + 37] + response[retailIndex + 38] + response[retailIndex + 39] + response[retailIndex + 40] + response[retailIndex + 41] + response[retailIndex + 42] + response[retailIndex + 43] + response[retailIndex + 44] + response[retailIndex + 45] + response[retailIndex + 46] + response[retailIndex + 47] + response[retailIndex + 48] + response[retailIndex + 49] + response[retailIndex + 50];
+                            floatArray = [1,2,3,4,5,6,7,8,9,0,'.'];
+                            validatedPrice = '';
                             for (let index = 0; index < retailPrice.length; index++) {
                                 for (let x = 0; x < floatArray.length; x++) {
                                     if(retailPrice[index] == floatArray[x]){
@@ -104,7 +108,10 @@
                                     
                                 }
                             }
-                        console.log(validatedPrice);
+                            mainEle = document.getElementById("main");
+                            span = document.createElement('span');
+                            span.innerHTML = "Part Number: " + partnumber + ", Price: " + validatedPrice;
+                        }
                     });
                 }
             };
