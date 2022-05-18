@@ -24,10 +24,16 @@
 </head>
 
 <body>
+    <style>
+        #csv{
+            display:none;
+        }
+    </style>
     <label for="myfile">Select a file:</label>
     <input type="file" id="myfile" name="myfile"><br><br>
     <input onclick="start()" type="submit">
     <div id="main"></div>
+    <a id="csv" href="" download="nissan-infiniti.csv">csv download</a>
   <!-- your content here... -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>               
@@ -49,6 +55,25 @@
             return arr;
         }
 
+        function ConvertToCSV(objArray) {
+            var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+            var str = '';
+
+            for (var i = 0; i < array.length; i++) {
+                var line = '';
+                for (var index in array[i]) {
+                    if (line != '') line += ','
+
+                    line += array[i][index];
+                }
+
+                str += line + '\r\n';
+            }
+
+            return str;
+        }
+        let ob = [['partnumber','price']];
+
         function start() {
             const file = document.getElementById('myfile').files[0];
             const reader = new FileReader();
@@ -64,9 +89,10 @@
                 for (let index = 0; index < data.length; index++) {
                     element = data[index];       
                     let partNumber = element.partnumber;                
-                    let partNumberHTML = element.partnumber + ".html";                
+                    let partNumberHTML = element.partnumber + ".html";  
+                    let csvContent = "data:text/csv;charset=utf-8,";              
                    $.get('https://www.nissanpartsdeal.com/parts/nissan~' + partNumberHTML)
-                    .then((response)=>{
+                    .done((response)=>{
                         if(response && response.indexOf("Retail Price") != -1) { 
                             retailIndex = response.indexOf("Retail Price");
                             let retailprice = '';
@@ -83,16 +109,24 @@
                                     }
                                 }
                             }
-                            
+                            ob.push([partNumber, validatedPrice])
+                            ob.forEach(function(rowArray) {
+                                let row = rowArray.join(",");
+                                csvContent += row + "\r\n";
+                            });
                             mainEle = document.getElementById("main");
                             div = document.createElement('div');
                             div.innerHTML = "Part Number: " + partNumber  + ", Price: " + validatedPrice;
                             mainEle.appendChild(div);
+                            let a = document.getElementById("csv");
+                            a.href = csvContent;
+                            a.style.display = "block";
                         }
-                    }).catch((error)=>{
+                    }).fail((error)=>{
                         console.log(error);
                     })
                 }
+
             };
 
             reader.onerror = function() {
