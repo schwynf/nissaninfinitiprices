@@ -28,11 +28,36 @@
         #csv{
             display:none;
         }
+
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
     </style>
     <label for="myfile">Select a file:</label>
     <input type="file" id="myfile" name="myfile"><br><br>
     <input onclick="start()" type="submit">
     <a id="csv" href="" download="nissan-infiniti.csv">csv download</a>
+    <table id="table">
+        <tr>
+          <th>Part Number</th>
+          <th>Price</th>
+          <th>75%</th>
+          <th>66%</th>
+        </tr>
+    </table>
+      
     <div id="main"></div>
   <!-- your content here... -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -85,19 +110,24 @@
             let floatArray = [1,2,3,4,5,6,7,8,9,0,'.'];
             let validatedPrice
             let mainEle;
-            let div;
+            let tr;
+            let td;
+            let td2;
+            let td3;
+            let td4;
+            let br;
 
             reader.onload = async function() {
                 let data = csvToArray(reader.result);
                 for (let index = 0; index < data.length; index++) {
-                    await sleep(200);
+                    await sleep(150);
                     element = data[index];       
                     let partNumber = element.partnumber;                
                     let partNumberHTML = element.partnumber + ".html";  
                     let csvContent = "data:text/csv;charset=utf-8,";   
                         $.get('https://www.nissanpartsdeal.com/parts/nissan~' + partNumberHTML)
                          .done((response)=>{
-                             if(response && response.indexOf("Retail Price") != -1) { 
+                            if(response && response.indexOf("Retail Price") != -1) { 
                                  retailIndex = response.indexOf("Retail Price");
                                  let retailprice = '';
                                  let validatedPrice = '';
@@ -118,17 +148,72 @@
                                      let row = rowArray.join(",");
                                      csvContent += row + "\r\n";
                                  });
-                                 mainEle = document.getElementById("main");
-                                 div = document.createElement('div');
-                                 div.innerHTML = "Part Number: " + partNumber+ ", Price: " + validatedPrice;
-                                 mainEle.appendChild(div);
+                                 mainEle = document.getElementById("table");
+                                 tr = document.createElement('tr');
+                                 td = document.createElement('td');
+                                 td.innerHTML = partNumber;
+                                 td2 = document.createElement('td');
+                                 td2.innerHTML = validatedPrice;
+                                 td3 = document.createElement('td');
+                                 td3.innerHTML = (.75 * parseFloat(validatedPrice)).toFixed(2);
+                                 td4 = document.createElement('td');
+                                 td4.innerHTML = (.66 * parseFloat(validatedPrice)).toFixed(2);
+                                 br = document.createElement('br');
+                                 tr.appendChild(td);
+                                 tr.appendChild(td2);
+                                 tr.appendChild(td3);
+                                 tr.appendChild(td4);
+                                 mainEle.appendChild(tr);
                                  let a = document.getElementById("csv");
                                  a.href = csvContent;
                                  a.style.display = "block";
-                             }
+                            }  
                          }).fail((error)=>{
-                             console.log(error);
-                         })        
+                             console.log(partNumberHTML);
+                             $.get('https://www.infinitipartsdeal.com/parts/infiniti~' + partNumberHTML).done((response)=>{
+                                    if(response && response.indexOf("Retail Price") != -1) { 
+                                        retailIndex = response.indexOf("Retail Price");
+                                        let retailprice = '';
+                                        let validatedPrice = '';
+                                        if(retailIndex != -1){
+                                            retailPrice = response[retailIndex + 30] + response[retailIndex + 31] + response[retailIndex + 32] + response[retailIndex + 33] + response[retailIndex + 34] + response[retailIndex + 35] + response[retailIndex + 36] + response[retailIndex + 37] + response[retailIndex + 38] + response[retailIndex + 39] + response[retailIndex + 40] + response[retailIndex + 41] + response[retailIndex + 42] + response[retailIndex + 43] + response[retailIndex + 44] + response[retailIndex + 45] + response[retailIndex + 46] + response[retailIndex + 47] + response[retailIndex + 48] + response[retailIndex + 49] + response[retailIndex + 50];
+                                            for (let index = 0; index < retailPrice.length; index++) {
+                                                for (let x = 0; x < floatArray.length; x++) {
+                                                    if(retailPrice[index] == floatArray[x]){
+                                                        validatedPrice += retailPrice[index];
+                                                        break;
+                                                    }
+                                                    
+                                                }
+                                            }
+                                        }
+                                        ob.push([partNumber, validatedPrice])
+                                        ob.forEach(function(rowArray) {
+                                            let row = rowArray.join(",");
+                                            csvContent += row + "\r\n";
+                                        });
+                                        mainEle = document.getElementById("table");
+                                        tr = document.createElement('tr');
+                                        td = document.createElement('td');
+                                        td.innerHTML = partNumber;
+                                        td2 = document.createElement('td');
+                                        td2.innerHTML = validatedPrice;
+                                        td3 = document.createElement('td');
+                                        td3.innerHTML = (.75 * parseFloat(validatedPrice)).toFixed(2);
+                                        td4 = document.createElement('td');
+                                        td4.innerHTML = (.66 * parseFloat(validatedPrice)).toFixed(2);
+                                        br = document.createElement('br');
+                                        tr.appendChild(td);
+                                        tr.appendChild(td2);
+                                        tr.appendChild(td3);
+                                        tr.appendChild(td4);
+                                        mainEle.appendChild(tr);
+                                        let a = document.getElementById("csv");
+                                        a.href = csvContent;
+                                        a.style.display = "block";
+                                    }
+                                })
+                        })        
                 }
 
             };
