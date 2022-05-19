@@ -51,6 +51,7 @@ tr:nth-child(even) {
     <a id="csv" href="" download="nissan-infiniti.csv">csv download</a>
     <table id="table">
         <tr>
+          <th>Index</th>
           <th>Part Number</th>
           <th>Price</th>
           <th>75%</th>
@@ -150,19 +151,22 @@ tr:nth-child(even) {
                                  });
                                  mainEle = document.getElementById("table");
                                  tr = document.createElement('tr');
-                                 td = document.createElement('td');
-                                 td.innerHTML = partNumber;
-                                 td2 = document.createElement('td');
-                                 td2.innerHTML = validatedPrice;
-                                 td3 = document.createElement('td');
-                                 td3.innerHTML = (.75 * parseFloat(validatedPrice)).toFixed(2);
-                                 td4 = document.createElement('td');
-                                 td4.innerHTML = (.66 * parseFloat(validatedPrice)).toFixed(2);
+                                 tdPartNumber = document.createElement('td');
+                                 tdPartNumber.innerHTML = partNumber;
+                                 tdPrice = document.createElement('td');
+                                 tdPrice.innerHTML = validatedPrice;
+                                 td75 = document.createElement('td');
+                                 td75.innerHTML = (.75 * parseFloat(validatedPrice)).toFixed(2);
+                                 td66 = document.createElement('td');
+                                 td66.innerHTML = (.66 * parseFloat(validatedPrice)).toFixed(2);
+                                 tdIndex = document.createElement('td');
+                                 tdIndex.innerHTML = index;
                                  br = document.createElement('br');
-                                 tr.appendChild(td);
-                                 tr.appendChild(td2);
-                                 tr.appendChild(td3);
-                                 tr.appendChild(td4);
+                                 tr.appendChild(tdIndex);
+                                 tr.appendChild(tdPartNumber);
+                                 tr.appendChild(tdPrice);
+                                 tr.appendChild(td75);
+                                 tr.appendChild(td66);
                                  mainEle.appendChild(tr);
                                  let a = document.getElementById("csv");
                                  a.href = csvContent;
@@ -192,21 +196,25 @@ tr:nth-child(even) {
                                             let row = rowArray.join(",");
                                             csvContent += row + "\r\n";
                                         });
+
                                         mainEle = document.getElementById("table");
                                         tr = document.createElement('tr');
-                                        td = document.createElement('td');
-                                        td.innerHTML = partNumber;
-                                        td2 = document.createElement('td');
-                                        td2.innerHTML = validatedPrice;
-                                        td3 = document.createElement('td');
-                                        td3.innerHTML = (.75 * parseFloat(validatedPrice)).toFixed(2);
-                                        td4 = document.createElement('td');
-                                        td4.innerHTML = (.66 * parseFloat(validatedPrice)).toFixed(2);
+                                        tdPartNumber = document.createElement('td');
+                                        tdPartNumber.innerHTML = partNumber;
+                                        tdPrice = document.createElement('td');
+                                        tdPrice.innerHTML = validatedPrice;
+                                        td75 = document.createElement('td');
+                                        td75.innerHTML = (.75 * parseFloat(validatedPrice)).toFixed(2);
+                                        td66 = document.createElement('td');
+                                        td66.innerHTML = (.66 * parseFloat(validatedPrice)).toFixed(2);
+                                        tdIndex = document.createElement('td');
+                                        tdIndex.innerHTML = index;
                                         br = document.createElement('br');
-                                        tr.appendChild(td);
-                                        tr.appendChild(td2);
-                                        tr.appendChild(td3);
-                                        tr.appendChild(td4);
+                                        tr.appendChild(tdIndex);
+                                        tr.appendChild(tdPartNumber);
+                                        tr.appendChild(tdPrice);
+                                        tr.appendChild(td75);
+                                        tr.appendChild(td66);
                                         mainEle.appendChild(tr);
                                         let a = document.getElementById("csv");
                                         a.href = csvContent;
