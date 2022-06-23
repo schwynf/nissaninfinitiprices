@@ -101,7 +101,7 @@ tr:nth-child(even) {
         const sleep = (milliseconds) => {
             return new Promise(resolve => setTimeout(resolve, milliseconds))
         }
-        let ob = [['partnumber','price']];
+        let ob = [['partnumber','price','75','60']];
 
         function start() {
             const file = document.getElementById('myfile').files[0];
@@ -144,7 +144,7 @@ tr:nth-child(even) {
                                          }
                                      }
                                  }
-                                 ob.push([partNumber, validatedPrice])
+                                 ob.push([partNumber, validatedPrice,(.75 * parseFloat(validatedPrice)).toFixed(2),(.66 * parseFloat(validatedPrice)).toFixed(2)])
                                  ob.forEach(function(rowArray) {
                                      let row = rowArray.join(",");
                                      csvContent += row + "\r\n";
@@ -191,7 +191,7 @@ tr:nth-child(even) {
                                                 }
                                             }
                                         }
-                                        ob.push([partNumber, validatedPrice])
+                                        ob.push([partNumber, validatedPrice,(.75 * parseFloat(validatedPrice)).toFixed(2),(.66 * parseFloat(validatedPrice)).toFixed(2)])
                                         ob.forEach(function(rowArray) {
                                             let row = rowArray.join(",");
                                             csvContent += row + "\r\n";
