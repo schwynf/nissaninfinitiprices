@@ -5,10 +5,8 @@
 <style>
 
 html, body {
-     max-width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
-    max-height: 100%;
-    overflow-y: hidden;
 }
 
 body{
@@ -55,13 +53,9 @@ body{
  top:20%;
 }
 
-
-
 .shadow{
   box-shadow: 15px 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-
-
 
 .outer:focus{
   color:green;
@@ -106,10 +100,13 @@ body{
   margin-top: 2px;
 }
 @media screen and (max-width: 950px) {
-    .game-info-box{
-  height: 30vh;
+  html, body {
+    max-height: 100%;
+    overflow-y: hidden;
 }
-
+  .game-info-box{
+  height: 34vh;
+}
 
 .away{
   position: absolute;
@@ -180,156 +177,156 @@ body{
     </div>
     <div class="row">
       <div class="flex-container">
-        <div style="background-color:aqua" class="outer shadow" data-id='1' data-active='0' data-name="test name" onclick="start(event)"><span data-id="1" data-active='0' data-name="test name" class="inner">1</span></div>
-        <div class="outer" data-id='2' data-active='0' data-name="test name" onclick="start(event)"><span data-id="2" data-active='0' data-name="test name" class="inner">2</span></div>
-        <div class="outer"><span class="inner">3</span></div>
-        <div class="outer"><span class="inner">4</span></div>
-        <div class="outer"><span class="inner">5</span></div>
-        <div class="outer"><span class="inner">6</span></div>
-        <div class="outer"><span class="inner">7</span></div>
-        <div class="outer"><span class="inner">8</span></div>
-        <div class="outer"><span class="inner">9</span></div>
-        <div class="outer"><span class="inner" title="William Mathews">WM</span></div>
-        <div  style="background-color: white;" class="outer"><span class="inner number-rotate">1</span></div>
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">1</span></div>
+          <div class="outer"><span class="inner">2</span></div>
+          <div class="outer"><span class="inner">3</span></div>
+          <div class="outer"><span class="inner">4</span></div>
+          <div class="outer"><span class="inner">5</span></div>
+          <div class="outer"><span class="inner">6</span></div>
+          <div class="outer"><span class="inner">7</span></div>
+          <div class="outer"><span class="inner">8</span></div>
+          <div class="outer"><span class="inner">9</span></div>
+          <div class="outer"><span class="inner">10</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">1</span></div>
       </div>
-    </div>
-    <div class="row">
+  </div>
+      <div class="row">
       <div class="flex-container">
-        <div class="outer"><span class="inner">1</span></div>
-        <div class="outer"><span class="inner">2</span></div>
-        <div class="outer"><span class="inner">3</span></div>
-        <div class="outer"><span class="inner">4</span></div>
-        <div class="outer"><span class="inner">5</span></div>
-        <div class="outer"><span class="inner">6</span></div>
-        <div class="outer"><span class="inner">7</span></div>
-        <div class="outer"><span class="inner">8</span></div>
-        <div class="outer"><span class="inner">9</span></div>
-        <div class="outer"><span class="inner">WM</span></div>
-        <div style="background-color: white;" class="outer"><span class="inner number-rotate">2</span></div>
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">11</span></div>
+          <div class="outer"><span class="inner">12</span></div>
+          <div class="outer"><span class="inner">13</span></div>
+          <div class="outer"><span class="inner">14</span></div>
+          <div class="outer"><span class="inner">15</span></div>
+          <div class="outer"><span class="inner">16</span></div>
+          <div class="outer"><span class="inner">17</span></div>
+          <div class="outer"><span class="inner">18</span></div>
+          <div class="outer"><span class="inner">19</span></div>
+          <div class="outer"><span class="inner">20</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">2</span></div>
       </div>
-    </div>
-    <div class="row">
-    <div class="flex-container">
-      <div class="outer"><span class="inner">1</span></div>
-      <div class="outer"><span class="inner">2</span></div>
-      <div class="outer"><span class="inner">3</span></div>
-      <div class="outer"><span class="inner">4</span></div>
-      <div class="outer"><span class="inner">5</span></div>
-      <div class="outer"><span class="inner">6</span></div>
-      <div class="outer"><span class="inner">7</span></div>
-      <div class="outer"><span class="inner">8</span></div>
-      <div class="outer"><span class="inner">9</span></div>
-      <div class="outer"><span class="inner">WM</span></div>
-      <div style="background-color: white;" class="outer"><span class="inner number-rotate">3</span></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="flex-container">
-      <div class="outer"><span class="inner">1</span></div>
-      <div class="outer"><span class="inner">2</span></div>
-      <div class="outer"><span class="inner">3</span></div>
-      <div class="outer"><span class="inner">4</span></div>
-      <div class="outer"><span class="inner">5</span></div>
-      <div class="outer"><span class="inner">6</span></div>
-      <div class="outer"><span class="inner">7</span></div>
-      <div class="outer"><span class="inner">8</span></div>
-      <div class="outer"><span class="inner">9</span></div>
-      <div class="outer"><span class="inner">WM</span></div>
-      <div style="background-color: white;" class="outer"><span class="inner number-rotate">4</span></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="flex-container">
-      <div class="outer"><span class="inner">1</span></div>
-      <div class="outer"><span class="inner">2</span></div>
-      <div class="outer"><span class="inner">3</span></div>
-      <div class="outer"><span class="inner">4</span></div>
-      <div class="outer"><span class="inner">5</span></div>
-      <div class="outer"><span class="inner">6</span></div>
-      <div class="outer"><span class="inner">7</span></div>
-      <div class="outer"><span class="inner">8</span></div>
-      <div class="outer"><span class="inner">9</span></div>
-      <div class="outer"><span class="inner">WM</span></div>
-      <div style="background-color: white;" class="outer"><span class="inner number-rotate">5</span></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="flex-container">
-      <div class="outer"><span class="inner">1</span></div>
-      <div class="outer"><span class="inner">2</span></div>
-      <div class="outer"><span class="inner">3</span></div>
-      <div class="outer"><span class="inner">4</span></div>
-      <div class="outer"><span class="inner">5</span></div>
-      <div class="outer"><span class="inner">6</span></div>
-      <div class="outer"><span class="inner">7</span></div>
-      <div class="outer"><span class="inner">8</span></div>
-      <div class="outer"><span class="inner">9</span></div>
-      <div class="outer"><span class="inner">WM</span></div>
-      <div style="background-color: white;" class="outer"><span class="inner number-rotate">6</span></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="flex-container">
-      <div class="outer"><span class="inner">1</span></div>
-      <div class="outer"><span class="inner">2</span></div>
-      <div class="outer"><span class="inner">3</span></div>
-      <div class="outer"><span class="inner">4</span></div>
-      <div class="outer"><span class="inner">5</span></div>
-      <div class="outer"><span class="inner">6</span></div>
-      <div class="outer"><span class="inner">7</span></div>
-      <div class="outer"><span class="inner">8</span></div>
-      <div class="outer"><span class="inner">9</span></div>
-      <div class="outer"><span class="inner">WM</span></div>
-      <div style="background-color: white;" class="outer"><span class="inner number-rotate">7</span></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="flex-container">
-      <div class="outer"><span class="inner">1</span></div>
-      <div class="outer"><span class="inner">2</span></div>
-      <div class="outer"><span class="inner">3</span></div>
-      <div class="outer"><span class="inner">4</span></div>
-      <div class="outer"><span class="inner">5</span></div>
-      <div class="outer"><span class="inner">6</span></div>
-      <div class="outer"><span class="inner">7</span></div>
-      <div class="outer"><span class="inner">8</span></div>
-      <div class="outer"><span class="inner">9</span></div>
-      <div class="outer"><span class="inner">WM</span></div>
-      <div style="background-color: white;" class="outer"><span class="inner number-rotate">8</span></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="flex-container">
-      <div class="outer"><span class="inner">1</span></div>
-      <div class="outer"><span class="inner">2</span></div>
-      <div class="outer"><span class="inner">3</span></div>
-      <div class="outer"><span class="inner">4</span></div>
-      <div class="outer"><span class="inner">5</span></div>
-      <div class="outer"><span class="inner">6</span></div>
-      <div class="outer"><span class="inner">7</span></div>
-      <div class="outer"><span class="inner">8</span></div>
-      <div class="outer"><span class="inner">9</span></div>
-      <div class="outer"><span class="inner">WM</span></div>
-      <div style="background-color: white;" class="outer"><span class="inner number-rotate">9</span></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="flex-container" >
-      <div class="outer"><span class="inner">1</span></div>
-      <div class="outer"><span class="inner">2</span></div>
-      <div class="outer"><span class="inner">3</span></div>
-      <div class="outer"><span class="inner">4</span></div>
-      <div class="outer"><span class="inner">5</span></div>
-      <div class="outer"><span class="inner">6</span></div>
-      <div class="outer"><span class="inner">7</span></div>
-      <div class="outer"><span class="inner">8</span></div>
-      <div class="outer"><span class="inner">9</span></div>
-      <div class="outer"><span class="inner">WM</span></div>
-      <div class="outer" style="background-color: white;"><span class="inner number-rotate">10</span></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="flex-container-numbers">
+  </div>
+      <div class="row">
+      <div class="flex-container">
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">21</span></div>
+          <div class="outer"><span class="inner">22</span></div>
+          <div class="outer"><span class="inner">23</span></div>
+          <div class="outer"><span class="inner">24</span></div>
+          <div class="outer"><span class="inner">25</span></div>
+          <div class="outer"><span class="inner">26</span></div>
+          <div class="outer"><span class="inner">27</span></div>
+          <div class="outer"><span class="inner">28</span></div>
+          <div class="outer"><span class="inner">29</span></div>
+          <div class="outer"><span class="inner">30</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">3</span></div>
+      </div>
+  </div>
+      <div class="row">
+      <div class="flex-container">
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">31</span></div>
+          <div class="outer"><span class="inner">32</span></div>
+          <div class="outer"><span class="inner">33</span></div>
+          <div class="outer"><span class="inner">34</span></div>
+          <div class="outer"><span class="inner">35</span></div>
+          <div class="outer"><span class="inner">36</span></div>
+          <div class="outer"><span class="inner">37</span></div>
+          <div class="outer"><span class="inner">38</span></div>
+          <div class="outer"><span class="inner">39</span></div>
+          <div class="outer"><span class="inner">40</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">4</span></div>
+      </div>
+  </div>
+      <div class="row">
+      <div class="flex-container">
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">41</span></div>
+          <div class="outer"><span class="inner">42</span></div>
+          <div class="outer"><span class="inner">43</span></div>
+          <div class="outer"><span class="inner">44</span></div>
+          <div class="outer"><span class="inner">45</span></div>
+          <div class="outer"><span class="inner">46</span></div>
+          <div class="outer"><span class="inner">47</span></div>
+          <div class="outer"><span class="inner">48</span></div>
+          <div class="outer"><span class="inner">49</span></div>
+          <div class="outer"><span class="inner">50</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">5</span></div>
+      </div>
+  </div>
+      <div class="row">
+      <div class="flex-container">
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">51</span></div>
+          <div class="outer"><span class="inner">52</span></div>
+          <div class="outer"><span class="inner">53</span></div>
+          <div class="outer"><span class="inner">54</span></div>
+          <div class="outer"><span class="inner">55</span></div>
+          <div class="outer"><span class="inner">56</span></div>
+          <div class="outer"><span class="inner">57</span></div>
+          <div class="outer"><span class="inner">58</span></div>
+          <div class="outer"><span class="inner">59</span></div>
+          <div class="outer"><span class="inner">60</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">6</span></div>
+      </div>
+  </div>
+      <div class="row">
+      <div class="flex-container">
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">61</span></div>
+          <div class="outer"><span class="inner">62</span></div>
+          <div class="outer"><span class="inner">63</span></div>
+          <div class="outer"><span class="inner">64</span></div>
+          <div class="outer"><span class="inner">65</span></div>
+          <div class="outer"><span class="inner">66</span></div>
+          <div class="outer"><span class="inner">67</span></div>
+          <div class="outer"><span class="inner">68</span></div>
+          <div class="outer"><span class="inner">69</span></div>
+          <div class="outer"><span class="inner">70</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">7</span></div>
+      </div>
+  </div>
+      <div class="row">
+      <div class="flex-container">
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">71</span></div>
+          <div class="outer"><span class="inner">72</span></div>
+          <div class="outer"><span class="inner">73</span></div>
+          <div class="outer"><span class="inner">74</span></div>
+          <div class="outer"><span class="inner">75</span></div>
+          <div class="outer"><span class="inner">76</span></div>
+          <div class="outer"><span class="inner">77</span></div>
+          <div class="outer"><span class="inner">78</span></div>
+          <div class="outer"><span class="inner">79</span></div>
+          <div class="outer"><span class="inner">80</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">8</span></div>
+      </div>
+  </div>
+      <div class="row">
+      <div class="flex-container">
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">81</span></div>
+          <div class="outer"><span class="inner">82</span></div>
+          <div class="outer"><span class="inner">83</span></div>
+          <div class="outer"><span class="inner">84</span></div>
+          <div class="outer"><span class="inner">85</span></div>
+          <div class="outer"><span class="inner">86</span></div>
+          <div class="outer"><span class="inner">87</span></div>
+          <div class="outer"><span class="inner">88</span></div>
+          <div class="outer"><span class="inner">89</span></div>
+          <div class="outer"><span class="inner">90</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">9</span></div>
+      </div>
+  </div>
+      <div class="row">
+      <div class="flex-container">
+          <div style="background-color:aqua" class="outer shadow"><span class="inner">91</span></div>
+          <div class="outer"><span class="inner">92</span></div>
+          <div class="outer"><span class="inner">93</span></div>
+          <div class="outer"><span class="inner">94</span></div>
+          <div class="outer"><span class="inner">95</span></div>
+          <div class="outer"><span class="inner">96</span></div>
+          <div class="outer"><span class="inner">97</span></div>
+          <div class="outer"><span class="inner">98</span></div>
+          <div class="outer"><span class="inner">99</span></div>
+          <div class="outer"><span class="inner">100</span></div>
+          <div style="background-color: white;" class="outer"><span class="inner number-rotate">10</span></div>
+      </div>
+  </div>
+  <div class="row">
+  <div class="flex-container-numbers">
       <div style="background-color: white;" class="outer margin"><span class="inner">1</span></div>
       <div style="background-color: white;" class="outer"><span class="inner">2</span></div>
       <div style="background-color: white;" class="outer"><span class="inner">3</span></div>
@@ -340,10 +337,11 @@ body{
       <div style="background-color: white;" class="outer"><span class="inner">8</span></div>
       <div style="background-color: white;" class="outer"><span class="inner">9</span></div>
       <div  style="background-color: white;" class="outer"><span class="inner">10</span></div>
-    </div>
-    </div>
+  </div>
+</div>
     <div class="home">Chicago Bears</div>
   </div>
 </body>
 </html>
+
 
