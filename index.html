@@ -99,13 +99,7 @@ body{
   /* margin-left: -4vw; */
   margin-top: 2px;
 }
-@media screen and (orientation:portrait) {
-  html, body {
-    max-height: 100%;
-    overflow-y: hidden;
-  }
 
-}
 @media screen and (max-width: 950px) {
 
   .game-info-box{
@@ -158,6 +152,20 @@ body{
 
   .home{
     font-size: 4vw;
+  }
+
+}
+
+@media screen and (orientation:portrait) {
+  html, body {
+    max-height: 100%;
+    overflow-y: hidden;
+  }
+
+}
+@media screen and (orientation:landscape) {
+    .game-info-box{
+    height: 100vh;
   }
 
 }
