@@ -37,7 +37,7 @@ body{
   font-size:2vw;
   width: 4vw;
   height: 4vw;
-  margin: .1vw;
+  margin-bottom: .1vw;
   text-align: center;
   position:relative;
   display:flex;
@@ -161,7 +161,7 @@ animation-fill-mode: forwards; */
     font-size:1.5vh;
     width: 3vh;
     height: 3vh;
-    margin: .1vh;
+    margin-bottom: .1vh;
   }
 
   .away{
@@ -210,6 +210,7 @@ animation-fill-mode: forwards; */
     let outerBoxes = document.getElementsByClassName('square');
     let innerBoxes = document.getElementsByClassName('inner-text');
     outerBoxes[colorCount].style.backgroundColor = '#f1f1f1';
+    outerBoxes[colorCount].style.margin = '.1vw';
     outerBoxes[colorCount].onmouseover = function(){
       this.style.backgroundColor = "white";
     };
