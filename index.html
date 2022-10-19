@@ -54,9 +54,11 @@ body{
  position: absolute;
  top:20%;
  background-color: none;
- /* animation-name: example,example2;
+}
+.inner-text{
+ animation-name: example;
 animation-duration: 2s;
-animation-fill-mode: forwards; */
+animation-fill-mode: forwards;
 }
 
 .shadow{
@@ -115,7 +117,7 @@ animation-fill-mode: forwards; */
 
 .home-number{
   background-color: white;
-   margin: .1vw;
+  margin: .1vw;
 }
 
 .away-number{
@@ -190,6 +192,19 @@ animation-fill-mode: forwards; */
     height: 100vh;
   }
 
+}
+
+@keyframes example {
+  from {
+    
+    top: 50%;
+    right:20%;
+  
+  }
+  to {
+    top: 0%;
+    right: 5%;
+  }
 }
 </style>
 <script>
