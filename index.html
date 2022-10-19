@@ -84,6 +84,7 @@ animation-fill-mode: forwards;
   background-repeat: no-repeat;
   background-size: auto;
   background-position: top; */
+  margin-left:4vw;
 }
 .game-info-box{
   
@@ -95,16 +96,17 @@ animation-fill-mode: forwards;
 
 .away{
   position: absolute;
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
   height:25px;
-  top:43%;
-  right:25px;
+  top:48%;
+  left:0px;
   /* left:0; */
   font-size:2vw;
   z-index: 2;
   width: 46.2vw;
   text-align: center;
   cursor: pointer;
+  left:-4vh;
 }
 
 .home{
@@ -113,6 +115,8 @@ animation-fill-mode: forwards;
   /* margin-left: -4vw; */
   margin-top: 2px;
   cursor: pointer;
+  margin-left: -5vw;
+  margin-bottom: 2vw;
 }
 
 .home-number{
@@ -136,10 +140,12 @@ animation-fill-mode: forwards;
     /* left:0px; */
     right:0px;
     font-size: 3vw;
+    left:-3vh;
   }
 
   .home{
     font-size: 3vw;
+    margin-bottom: 1vw;
   }
 
 }
@@ -170,12 +176,16 @@ animation-fill-mode: forwards;
   .away{
     position: absolute;
     /* top:18vh; */
-    right:-7vh;
+    left:-10vh;
     font-size: 4vw;
   }
 
   .home{
     font-size: 4vw;
+  }
+
+  .game-square-box{
+    margin-left:10vw;
   }
 
 }
@@ -235,43 +245,43 @@ animation-fill-mode: forwards;
     if(colorCount < 99){
       if(colorCount == 9){
         document.getElementsByClassName('number-rotate')[0].innerHTML = 0;
-        document.getElementsByClassName('number-rotate')[0].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[0].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 19){
         document.getElementsByClassName('number-rotate')[1].innerHTML = 1;
-        document.getElementsByClassName('number-rotate')[1].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[1].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 29){
         document.getElementsByClassName('number-rotate')[2].innerHTML = 2;
-        document.getElementsByClassName('number-rotate')[2].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[2].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 39){
         document.getElementsByClassName('number-rotate')[3].innerHTML = 3;
-        document.getElementsByClassName('number-rotate')[3].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[3].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 49){
         document.getElementsByClassName('number-rotate')[4].innerHTML = 4;
-        document.getElementsByClassName('number-rotate')[4].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[4].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 59){
         document.getElementsByClassName('number-rotate')[5].innerHTML = 5;
-        document.getElementsByClassName('number-rotate')[5].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[5].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 69){
         document.getElementsByClassName('number-rotate')[6].innerHTML = 6;
-        document.getElementsByClassName('number-rotate')[6].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[6].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 79){
         document.getElementsByClassName('number-rotate')[7].innerHTML = 7;
-        document.getElementsByClassName('number-rotate')[7].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[7].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 89){
         document.getElementsByClassName('number-rotate')[8].innerHTML = 8;
-        document.getElementsByClassName('number-rotate')[8].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[8].style.transform = 'rotate(90deg)';
       }
       if(colorCount == 98){
         document.getElementsByClassName('number-rotate')[9].innerHTML = 9;
-        document.getElementsByClassName('number-rotate')[9].style.transform = 'rotate(90deg)';
+        // document.getElementsByClassName('number-rotate')[9].style.transform = 'rotate(90deg)';
       }
       colorCount++;
       setTimeout(()=>{
@@ -292,6 +302,7 @@ animation-fill-mode: forwards;
     <div class="away" onclick="colorStart()">
       &#127944; Los Angeles Rams
     </div>
+    <div class="home">&#127944; Chicago Bears</div>
     <div class="row">
       <div class="flex-container">
           <div class="outer square"><span class="inner inner-text"></span></div>
@@ -456,7 +467,7 @@ animation-fill-mode: forwards;
       <div style="background-color:white" class="outer home-number"><span class="inner">9</span></div>
   </div>
 </div>
-    <div class="home">&#127944; Chicago Bears</div>
+    <!-- <div class="home">&#127944; Chicago Bears</div> -->
   </div>
 </body>
 </html>
