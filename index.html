@@ -20,20 +20,20 @@ body{
 
 .flex-container {
   display: flex;
-  background-color: white;
+  background-color: none;
   width: 46.2vw;
   /* height: 44vw; */
 }
 .flex-container-numbers {
   display: flex;
-  background-color: white;
+  background-color: none;
   width: 42vw;
   margin-left: -4vw;
 }
 
 .outer{
   /* aspect-ratio: 1 / 1; */
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
   font-size:2vw;
   width: 4vw;
   height: 4vw;
@@ -43,6 +43,8 @@ body{
   display:flex;
   justify-content:center;
   cursor: pointer;
+  /* background-color: none; */
+  background-color: green;
 }
 .outer:hover{
   background-color: white;
@@ -51,6 +53,10 @@ body{
 .inner{
  position: absolute;
  top:20%;
+ background-color: none;
+ /* animation-name: example,example2;
+animation-duration: 2s;
+animation-fill-mode: forwards; */
 }
 
 .shadow{
@@ -72,8 +78,13 @@ body{
   padding-top: 4vh;
   padding-bottom: 4vh;
   position: relative;
+  /* background-image: url('./icons8-walter-white-480.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: top; */
 }
 .game-info-box{
+  
   height: 100vh;
   max-height: 100vh;
   background-color: white;
@@ -91,6 +102,7 @@ body{
   z-index: 2;
   width: 46.2vw;
   text-align: center;
+  cursor: pointer;
 }
 
 .home{
@@ -98,6 +110,7 @@ body{
   font-size:2vw;
   /* margin-left: -4vw; */
   margin-top: 2px;
+  cursor: pointer;
 }
 
 .home-number{
@@ -144,7 +157,7 @@ body{
 
   .outer{
     aspect-ratio: 1 / 1;
-    background-color: #f1f1f1;
+    /* background-color: #f1f1f1; */
     font-size:1.5vh;
     width: 3vh;
     height: 3vh;
@@ -184,186 +197,215 @@ body{
     console.log(event.target.getAttribute('data-active'));
   }
 
+  let colorCount = 0;
+  let colorTimer;
+  function colorStart() {
+    colorChange();
+    // colorTimer = setTimeout(()=>{
+    //   colorChange();
+    // },50)
+  }
+
+  function colorChange() {
+    let outerBoxes = document.getElementsByClassName('square');
+    let innerBoxes = document.getElementsByClassName('inner-text');
+    outerBoxes[colorCount].style.backgroundColor = '#f1f1f1';
+    outerBoxes[colorCount].onmouseover = function(){
+      this.style.backgroundColor = "white";
+    };
+    outerBoxes[colorCount].onmouseout = function(){
+      this.style.backgroundColor = '#f1f1f1';
+    };
+    innerBoxes[colorCount].innerHTML = '';
+    if(colorCount < 99){
+      colorCount++;
+      setTimeout(()=>{
+        colorStart();
+      },50)
+    }
+  }
+
 </script>
 </head>
-<body>
+<body onload="setTimeout(()=>{colorChange();},2000)">
   <div class="game-info-box">
     <div class="row"> 
       <h1>Squares</h1>
     </div>
   </div>
   <div class="game-square-box">
-    <div class="away">
-      Los Angeles Rams
+    <div class="away" onclick="colorStart()">
+      &#127944; Los Angeles Rams
     </div>
     <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">1</span></div>
-          <div class="outer"><span class="inner">2</span></div>
-          <div class="outer"><span class="inner">3</span></div>
-          <div class="outer"><span class="inner">4</span></div>
-          <div class="outer"><span class="inner">5</span></div>
-          <div class="outer"><span class="inner">6</span></div>
-          <div class="outer"><span class="inner">7</span></div>
-          <div class="outer"><span class="inner">8</span></div>
-          <div class="outer"><span class="inner">9</span></div>
-          <div class="outer"><span class="inner">10</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">1</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">1</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">11</span></div>
-          <div class="outer"><span class="inner">12</span></div>
-          <div class="outer"><span class="inner">13</span></div>
-          <div class="outer"><span class="inner">14</span></div>
-          <div class="outer"><span class="inner">15</span></div>
-          <div class="outer"><span class="inner">16</span></div>
-          <div class="outer"><span class="inner">17</span></div>
-          <div class="outer"><span class="inner">18</span></div>
-          <div class="outer"><span class="inner">19</span></div>
-          <div class="outer"><span class="inner">20</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">2</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">2</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">21</span></div>
-          <div class="outer"><span class="inner">22</span></div>
-          <div class="outer"><span class="inner">23</span></div>
-          <div class="outer"><span class="inner">24</span></div>
-          <div class="outer"><span class="inner">25</span></div>
-          <div class="outer"><span class="inner">26</span></div>
-          <div class="outer"><span class="inner">27</span></div>
-          <div class="outer"><span class="inner">28</span></div>
-          <div class="outer"><span class="inner">29</span></div>
-          <div class="outer"><span class="inner">30</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">3</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">3</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">31</span></div>
-          <div class="outer"><span class="inner">32</span></div>
-          <div class="outer"><span class="inner">33</span></div>
-          <div class="outer"><span class="inner">34</span></div>
-          <div class="outer"><span class="inner">35</span></div>
-          <div class="outer"><span class="inner">36</span></div>
-          <div class="outer"><span class="inner">37</span></div>
-          <div class="outer"><span class="inner">38</span></div>
-          <div class="outer"><span class="inner">39</span></div>
-          <div class="outer"><span class="inner">40</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">4</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">4</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">41</span></div>
-          <div class="outer"><span class="inner">42</span></div>
-          <div class="outer"><span class="inner">43</span></div>
-          <div class="outer"><span class="inner">44</span></div>
-          <div class="outer"><span class="inner">45</span></div>
-          <div class="outer"><span class="inner">46</span></div>
-          <div class="outer"><span class="inner">47</span></div>
-          <div class="outer"><span class="inner">48</span></div>
-          <div class="outer"><span class="inner">49</span></div>
-          <div class="outer"><span class="inner">50</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">5</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">5</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">51</span></div>
-          <div class="outer"><span class="inner">52</span></div>
-          <div class="outer"><span class="inner">53</span></div>
-          <div class="outer"><span class="inner">54</span></div>
-          <div class="outer"><span class="inner">55</span></div>
-          <div class="outer"><span class="inner">56</span></div>
-          <div class="outer"><span class="inner">57</span></div>
-          <div class="outer"><span class="inner">58</span></div>
-          <div class="outer"><span class="inner">59</span></div>
-          <div class="outer"><span class="inner">60</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">6</span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">O</span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">6</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">61</span></div>
-          <div class="outer"><span class="inner">62</span></div>
-          <div class="outer"><span class="inner">63</span></div>
-          <div class="outer"><span class="inner">64</span></div>
-          <div class="outer"><span class="inner">65</span></div>
-          <div class="outer"><span class="inner">66</span></div>
-          <div class="outer"><span class="inner">67</span></div>
-          <div class="outer"><span class="inner">68</span></div>
-          <div class="outer"><span class="inner">69</span></div>
-          <div class="outer"><span class="inner">70</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">7</span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">7</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">71</span></div>
-          <div class="outer"><span class="inner">72</span></div>
-          <div class="outer"><span class="inner">73</span></div>
-          <div class="outer"><span class="inner">74</span></div>
-          <div class="outer"><span class="inner">75</span></div>
-          <div class="outer"><span class="inner">76</span></div>
-          <div class="outer"><span class="inner">77</span></div>
-          <div class="outer"><span class="inner">78</span></div>
-          <div class="outer"><span class="inner">79</span></div>
-          <div class="outer"><span class="inner">80</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">8</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">8</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">81</span></div>
-          <div class="outer"><span class="inner">82</span></div>
-          <div class="outer"><span class="inner">83</span></div>
-          <div class="outer"><span class="inner">84</span></div>
-          <div class="outer"><span class="inner">85</span></div>
-          <div class="outer"><span class="inner">86</span></div>
-          <div class="outer"><span class="inner">87</span></div>
-          <div class="outer"><span class="inner">88</span></div>
-          <div class="outer"><span class="inner">89</span></div>
-          <div class="outer"><span class="inner">90</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">9</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">9</span></div>
       </div>
   </div>
       <div class="row">
       <div class="flex-container">
-          <div style="background-color:aqua" class="outer shadow"><span class="inner">91</span></div>
-          <div class="outer"><span class="inner">92</span></div>
-          <div class="outer"><span class="inner">93</span></div>
-          <div class="outer"><span class="inner">94</span></div>
-          <div class="outer"><span class="inner">95</span></div>
-          <div class="outer"><span class="inner">96</span></div>
-          <div class="outer"><span class="inner">97</span></div>
-          <div class="outer"><span class="inner">98</span></div>
-          <div class="outer"><span class="inner">99</span></div>
-          <div class="outer"><span class="inner">100</span></div>
-          <div class="outer  away-number"><span class="inner number-rotate">10</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text">X</span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div class="outer square"><span class="inner inner-text"></span></div>
+          <div style="background-color:white" class="outer away-number"><span class="inner number-rotate">10</span></div>
       </div>
   </div>
   <div class="row">
   <div class="flex-container-numbers">
-      <div class="outer margin home-number"><span class="inner">1</span></div>
-      <div class="outer home-number"><span class="inner">2</span></div>
-      <div class="outer home-number"><span class="inner">3</span></div>
-      <div class="outer home-number"><span class="inner">4</span></div>
-      <div class="outer home-number"><span class="inner">5</span></div>
-      <div class="outer home-number"><span class="inner">6</span></div>
-      <div class="outer home-number"><span class="inner">7</span></div>
-      <div class="outer home-number"><span class="inner">8</span></div>
-      <div class="outer home-number"><span class="inner">9</span></div>
-      <div class="outer home-number"><span class="inner">10</span></div>
+      <div style="background-color:white" class="outer margin home-number"><span class="inner">1</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">2</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">3</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">4</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">5</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">6</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">7</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">8</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">9</span></div>
+      <div style="background-color:white" class="outer home-number"><span class="inner">10</span></div>
   </div>
 </div>
-    <div class="home">Chicago Bears</div>
+    <div class="home">&#127944; Chicago Bears</div>
   </div>
 </body>
 </html>
+
 
 
 
